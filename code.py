@@ -31,12 +31,15 @@ def aiturn():
 def whowins(a, y):
     """returns who is winner text"""
     q = ''
-    if y == a+1 or y == a-2:
-        q = 'You win!'
-    elif a == y+1 or a == y-2:
-        q = 'You lose'
-    elif a == y:
-        q = 'Draw'
+    try:
+        if y == a+1 or y == a-2:
+            q = 'You win!'
+        elif a == y+1 or a == y-2:
+            q = 'You lose'
+        elif a == y:
+            q = 'Draw'
+    except TypeError:
+        return 'Неверно введены данные'
     return q
 
 
@@ -59,11 +62,13 @@ def realiser():
         print(whowins(a, y))
         if whowins(a, y) == 'Draw':
             u[1] += 1
+            s += 1
         elif whowins(a, y) == 'You win!':
             u[0] += 1
+            s += 1
         elif whowins(a, y) == 'You lose':
             u[2] += 1
-        s += 1
+            s += 1
         x = input('Next game, to stop print 0>>')
         if x == '0':
             break
